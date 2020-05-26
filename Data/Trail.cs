@@ -23,5 +23,6 @@ namespace Data
         public double Length { get; set; }
         [Required]
         public string TrailType { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
