@@ -89,6 +89,10 @@
     <Compile Include="Migrations\202005252358380_InitialMigration.Designer.cs">
       <DependentUpon>202005252358380_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005290243222_Trail-Update.cs" />
+    <Compile Include="Migrations\202005290243222_Trail-Update.Designer.cs">
+      <DependentUpon>202005290243222_Trail-Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Park.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +105,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202005252358380_InitialMigration.resx">
       <DependentUpon>202005252358380_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005290243222_Trail-Update.resx">
+      <DependentUpon>202005290243222_Trail-Update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

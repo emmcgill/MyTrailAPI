@@ -12,7 +12,7 @@ namespace Models.Park
         [Required]
         [MinLength(2, ErrorMessage ="Please Enter at least two characters.")]
         [MaxLength(100, ErrorMessage ="There are too many characters in this field")]
-        public string Name { get; set; }
+        public string ParkName { get; set; }
 
         [Required]
         [MinLength(2, ErrorMessage = "Please Enter at least two characters.")]
@@ -23,7 +23,12 @@ namespace Models.Park
         [MinLength(2, ErrorMessage = "Please Enter at least two characters.")]
         [MaxLength(25, ErrorMessage = "There are too many characters in this field")]
         public string State { get; set; }
-       
+
+        [Required]
+        [Range(1776, 2020,
+        ErrorMessage = "Year established must be between 1776 and 2020.")]
+        public int YearEstablished { get; set; }
+
         [Required]
         [MinLength(2, ErrorMessage = "Please Enter at least two characters.")]
         [MaxLength(2000, ErrorMessage = "There are too many characters in this field")]

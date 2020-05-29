@@ -10,10 +10,15 @@ namespace Models
 {
     public class ParkDetail
     {
+        [Display(Name ="Park Id")]
         public int ParkId { get; set; }
-        public string Name { get; set; }
+
+        [Display(Name ="Park Name")]
+        public string ParkName { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+
+        public int YearEstablished { get; set; }
 
         [Display(Name="Park Description")]
         public string ParkDescription { get; set; }

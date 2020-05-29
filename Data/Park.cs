@@ -18,6 +18,8 @@ namespace Data
         [Required]
         public string State { get; set; }
         [Required]
+        public int YearEstablished { get; set; }
+        [Required]
         public string ParkDescription { get; set; }
 
         public bool IsDeleted { get; set; }

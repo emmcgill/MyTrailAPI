@@ -1,31 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data
+namespace Models.Trail
 {
-    public class Trail
+    public class TrailDetail
     {
-        [Key]
+        [Display(Name ="Trail Id")]
         public int TrailId { get; set; }
-
-        [ForeignKey("Park")]
+        [Display(Name = "Park Id")]
         public int ParkId { get; set; }
-        public virtual Park Park { get; set; }
-
-        [Required]
+        [Display(Name = "Trail Name")]
         public string TrailName { get; set; }
-        [Required]
+        [Display(Name = "Length")]
         public double TrailLength { get; set; }
-        [Required]
+        [Display(Name = "Type")]
         public string TrailType { get; set; }
-
-        [Required]
+        [Display(Name = "Trail Description")]
         public string TrailDescription { get; set; }
-        public bool IsDeleted { get; set; }
     }
 }

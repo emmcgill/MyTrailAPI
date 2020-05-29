@@ -17,10 +17,11 @@ namespace Services
             var entity =
                 new Park()
                 {
-                    Name = model.Name,
+                    Name = model.ParkName,
                     City = model.City,
                     State = model.State,
-                    ParkDescription = model.ParkDescription
+                    ParkDescription = model.ParkDescription,
+                    YearEstablished = model.YearEstablished
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -41,11 +42,36 @@ namespace Services
                     new ParkDetail
                     {
                         ParkId = entity.ParkId,
-                        Name = entity.Name,
+                        ParkName = entity.Name,
                         City = entity.City,
                         State = entity.State,
-                        ParkDescription = entity.ParkDescription
+                        ParkDescription = entity.ParkDescription,
+                        YearEstablished = entity.YearEstablished
                     };
+            }
+        }
+
+        public IEnumerable<ParkDetail> GetParksByState(string stateName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Parks
+                    .Where(name => name.State == stateName)
+                    .Select(
+                        e =>
+                        new ParkDetail
+                        {
+                            ParkId = e.ParkId,
+                            ParkName = e.Name,
+                            City = e.City,
+                            ParkDescription = e.ParkDescription,
+                            YearEstablished = e.YearEstablished
+                        }
+                    );
+
+                return query.ToArray();
             }
         }
 
@@ -58,10 +84,11 @@ namespace Services
                         .Parks
                         .Single(park => park.ParkId == model.ParkId);
 
-                entity.Name = model.Name;
+                entity.Name = model.ParkName;
                 entity.City = model.City;
                 entity.State = model.State;
                 entity.ParkDescription = model.ParkDescription;
+                entity.YearEstablished = model.YearEstablished;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -76,9 +103,9 @@ namespace Services
                         .Parks
                         .Single(park => park.ParkId == parkId);
 
-                if(entity.IsDeleted)
+                if(!entity.IsDeleted)
                 {
-                    entity.IsDeleted = false;
+                    entity.IsDeleted = true;
                 }
                 return ctx.SaveChanges() == 1;
             }

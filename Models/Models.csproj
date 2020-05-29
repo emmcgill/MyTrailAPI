@@ -46,6 +46,9 @@
     <Compile Include="Park\ParkDetail.cs" />
     <Compile Include="Park\ParkEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trail\TrailCreate.cs" />
+    <Compile Include="Trail\TrailDetail.cs" />
+    <Compile Include="Trail\TrailEdit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

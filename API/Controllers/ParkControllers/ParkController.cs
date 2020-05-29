@@ -1,4 +1,5 @@
 ﻿using Models.Park;
+using Models.Trail;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace API.Controllers.ParkControllers
     public class ParkController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult Post(ParkCreate park)
+        public IHttpActionResult PostPark(ParkCreate park)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -36,10 +37,17 @@ namespace API.Controllers.ParkControllers
             return Ok(park);
         }
 
+        [HttpGet]
+        public IHttpActionResult GetParkDetailsByState(string state)
+        {
+            ParkService parkService = new ParkService();
+            var park = parkService.GetParksByState(state);
+            return Ok(park);
+        }
 
-        
+
         [HttpPut]
-        public IHttpActionResult Put(ParkEdit park)
+        public IHttpActionResult UpdatePark(ParkEdit park)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -52,9 +60,9 @@ namespace API.Controllers.ParkControllers
             return Ok();
         }
 
-        
+
         [HttpDelete]
-        public IHttpActionResult Delete(int parkId)
+        public IHttpActionResult DeletePark(int parkId)
         {
             ParkService service = new ParkService();
 
